@@ -2,9 +2,7 @@
 
 A modern, full-featured event booking and management platform built with Django. Discover, book, and organize events seamlessly with an AI-powered chatbot assistant.
 
-![Django](https://img.shields.io/badge/Django-4.2+-green.svg)
-![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 
 ## ✨ Features
 
@@ -223,7 +221,6 @@ python create_fake_events.py
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -238,19 +235,19 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 👨‍💻 Author
 
 **Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+- GitHub: Nirjala542
+- Email: nirjala.sharma542@gmail.com
 
 ## 🙏 Acknowledgments
 
 - Django community for the excellent framework
 - Google for the Gemini AI API
 - Tailwind CSS for the beautiful styling framework
-- All contributors and users of this project
+  
 
 ## 📞 Support
 
-For support, email support@bookmyevent.com or open an issue in the GitHub repository.
+For support, email nirjala.sharma542@gmail.com or open an issue in the GitHub repository.
 
 ## 🔮 Future Enhancements
 

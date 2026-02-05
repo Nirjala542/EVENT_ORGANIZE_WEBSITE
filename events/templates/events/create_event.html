@@ -1,0 +1,65 @@
+{% extends 'events/base.html' %}
+{% block content %}
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-2xl font-bold mb-4">Create an Event</h1>
+    <p class="muted mb-6">Fill in the details below to create your own event.</p>
+
+    <div class="bg-white p-6 rounded shadow">
+      <form method="post">
+        {% csrf_token %}
+
+        <div class="mb-4">
+          <label class="font-semibold">Event Name</label>
+          {{ form.title }}
+        </div>
+
+        <div class="mb-4">
+          <label class="font-semibold">Short Description</label>
+          {{ form.short_description }}
+        </div>
+
+        <div class="mb-4">
+          <label class="font-semibold">Full Details</label>
+          {{ form.description }}
+        </div>
+
+        <div class="mb-4">
+          <label class="font-semibold">Event Highlights</label>
+          {{ form.highlights }}
+        </div>
+
+        <div class="mb-4">
+          <label class="font-semibold">Event Image URL</label>
+          {{ form.image_url }}
+          <small class="muted">Paste the URL of an image (e.g., from Unsplash, Pexels, or your server).</small>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="font-semibold">Date</label>
+            {{ form.date }}
+          </div>
+          <div>
+            <label class="font-semibold">Time</label>
+            {{ form.time }}
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="font-semibold">Location/Venue</label>
+          {{ form.location }}
+        </div>
+
+        <div class="mb-4">
+          <label class="font-semibold">Capacity (Number of Attendees)</label>
+          {{ form.capacity }}
+        </div>
+
+        <div class="mt-6 flex gap-3">
+          <button type="submit" class="btn-accent">Create Event</button>
+          <a href="/events/" class="btn-outline">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

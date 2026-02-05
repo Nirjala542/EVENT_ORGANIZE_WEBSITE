@@ -1,0 +1,25 @@
+{% extends 'events/base.html' %}
+{% block content %}
+  <h1 class="text-2xl font-bold">Support</h1>
+  <p class="muted">Find answers to common questions or reach out via the form below.</p>
+
+  <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="card-ghost p-4">
+      <h3 class="font-semibold">FAQ</h3>
+      <ul class="muted mt-2">
+        <li><strong>How do I register?</strong> Create an account and click Register on an event.</li>
+        <li><strong>Can I cancel?</strong> Yes — cancellations are available in your profile.</li>
+      </ul>
+    </div>
+    <div class="card-ghost p-4">
+      <h3 class="font-semibold">Contact Us</h3>
+      <form method="post">
+        {% csrf_token %}
+        <input name="name" placeholder="Your name" class="border p-2 w-full rounded" />
+        <input name="email" placeholder="Email" class="border p-2 w-full rounded mt-2" />
+        <textarea name="message" placeholder="Message" class="border p-2 w-full rounded mt-2"></textarea>
+        <div class="mt-3"><button class="btn-accent">Send</button></div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

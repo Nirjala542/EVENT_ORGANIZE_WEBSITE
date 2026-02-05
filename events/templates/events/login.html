@@ -1,0 +1,16 @@
+{% extends 'events/base.html' %}
+{% block content %}
+  <div class="max-w-md mx-auto bg-white p-6 rounded shadow">
+    <h1 class="text-xl font-bold mb-4">Login</h1>
+    <form method="post">
+      {% csrf_token %}
+      <label class="block">Username</label>
+      <input name="username" class="border p-2 w-full" />
+      <label class="block mt-2">Password</label>
+      <input name="password" type="password" class="border p-2 w-full" />
+      <div class="mt-4">
+        <button class="bg-blue-600 text-white px-3 py-2">Login</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

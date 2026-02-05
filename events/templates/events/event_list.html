@@ -1,0 +1,32 @@
+{% extends 'events/base.html' %}
+{% block content %}
+  <h1 class="text-2xl font-bold mb-4">All Events</h1>
+  <form method="get" class="mb-6 flex flex-wrap gap-3">
+    <input type="text" name="q" placeholder="Search" class="border p-2 rounded" />
+    <input type="date" name="date" class="border p-2 rounded" />
+    <input type="text" name="location" placeholder="Location" class="border p-2 rounded" />
+    <button class="btn-accent">Filter</button>
+  </form>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for event in events %}
+      <div class="event-card card-ghost p-4">
+        {% if event.image_url %}
+          <img src="{{ event.image_url }}" alt="{{ event.title }}" class="w-full h-48 object-cover rounded">
+        {% else %}
+          <img src="/static/events/images/event-placeholder.svg" class="w-full h-48 object-cover rounded">
+        {% endif %}
+        <div class="mt-3">
+          <h3 class="font-semibold">{{ event.title }}</h3>
+          <p class="muted text-sm">{{ event.short_description|truncatechars:140 }}</p>
+        </div>
+        <div class="mt-3 flex justify-between items-center">
+          <small class="muted">{{ event.date }} · {{ event.location }}</small>
+          <a href="/events/{{ event.slug }}/" class="text-indigo-600">Details</a>
+        </div>
+      </div>
+    {% empty %}
+      <p>No events found.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

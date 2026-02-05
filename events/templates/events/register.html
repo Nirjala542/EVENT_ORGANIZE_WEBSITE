@@ -1,0 +1,106 @@
+{% extends 'events/base.html' %}
+{% block content %}
+  <div class="max-w-2xl mx-auto mt-6">
+    <div class="card-ghost p-6">
+      <h1 class="text-3xl font-bold mb-2">Register for Event</h1>
+      <p class="muted mb-6">{{ event.title }}</p>
+      
+      <form method="post" class="space-y-4">
+        {% csrf_token %}
+        
+        <!-- Full Name -->
+        <div>
+          <label class="font-semibold block mb-2">Full Name *</label>
+          {{ form.full_name }}
+          {% if form.full_name.errors %}<p class="text-red-600 text-sm">{{ form.full_name.errors }}</p>{% endif %}
+        </div>
+
+        <!-- Age -->
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="font-semibold block mb-2">Age *</label>
+            {{ form.age }}
+            {% if form.age.errors %}<p class="text-red-600 text-sm">{{ form.age.errors }}</p>{% endif %}
+          </div>
+
+          <!-- Phone Number -->
+          <div>
+            <label class="font-semibold block mb-2">Phone Number *</label>
+            {{ form.phone_number }}
+            {% if form.phone_number.errors %}<p class="text-red-600 text-sm">{{ form.phone_number.errors }}</p>{% endif %}
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="font-semibold block mb-2">Email *</label>
+          {{ form.email }}
+          {% if form.email.errors %}<p class="text-red-600 text-sm">{{ form.email.errors }}</p>{% endif %}
+        </div>
+
+        <!-- Category: Student or Working -->
+        <div>
+          <label class="font-semibold block mb-3">{{ form.category.label }} *</label>
+          <div class="space-y-2">
+            {% for choice_value, choice_label in form.category.field.choices %}
+              <label class="flex items-center space-x-2 cursor-pointer">
+                <input type="radio" name="category" value="{{ choice_value }}" 
+                  onchange="updateCategoryFields()" 
+                  {% if form.category.value == choice_value %}checked{% endif %}
+                  class="cursor-pointer">
+                <span>{{ choice_label }}</span>
+              </label>
+            {% endfor %}
+          </div>
+          {% if form.category.errors %}<p class="text-red-600 text-sm">{{ form.category.errors }}</p>{% endif %}
+        </div>
+
+        <!-- Student Fields (conditional) -->
+        <div id="student-fields" style="display: none;" class="space-y-4 p-4 bg-blue-50 rounded">
+          <div>
+            <label class="font-semibold block mb-2">College/University Name</label>
+            {{ form.college_name }}
+            {% if form.college_name.errors %}<p class="text-red-600 text-sm">{{ form.college_name.errors }}</p>{% endif %}
+          </div>
+
+          <div>
+            <label class="font-semibold block mb-2">Expected Graduation Year</label>
+            {{ form.graduation_year }}
+            {% if form.graduation_year.errors %}<p class="text-red-600 text-sm">{{ form.graduation_year.errors }}</p>{% endif %}
+          </div>
+        </div>
+
+        <!-- Terms & Conditions -->
+        <div class="p-4 border rounded bg-gray-50">
+          <label class="flex items-start space-x-3 cursor-pointer">
+            {{ form.terms_agreed }}
+            <span class="text-sm">
+              I agree to the <a href="/terms/" class="text-indigo-600 hover:underline">Terms and Conditions</a> and confirm that the information provided is accurate. *
+            </span>
+          </label>
+          {% if form.terms_agreed.errors %}<p class="text-red-600 text-sm">{{ form.terms_agreed.errors }}</p>{% endif %}
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-4">
+          <button type="submit" class="btn-accent w-full">Complete Registration</button>
+          <a href="/events/{{ event.slug }}/" class="block text-center mt-2 text-gray-600 hover:text-gray-900">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function updateCategoryFields() {
+      const category = document.querySelector('input[name="category"]:checked').value;
+      const studentFields = document.getElementById('student-fields');
+      if (category === 'student') {
+        studentFields.style.display = 'block';
+      } else {
+        studentFields.style.display = 'none';
+      }
+    }
+    // Initialize on page load
+    window.addEventListener('load', updateCategoryFields);
+  </script>
+{% endblock %}

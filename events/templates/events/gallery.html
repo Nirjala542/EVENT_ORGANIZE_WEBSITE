@@ -1,0 +1,120 @@
+{% extends 'events/base.html' %}
+{% block content %}
+  <h1 class="text-2xl font-bold mb-4">Event Gallery</h1>
+  <p class="muted mb-8">Unforgettable moments from our amazing events — explore the energy, excitement, and community!</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Gallery Item 1 -->
+    <div class="card-ghost overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500&h=350&fit=crop" alt="Tech Conference" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="font-semibold text-lg mb-2">Tech Conference 2025</h3>
+        <p class="muted text-sm">Industry leaders sharing insights on cutting-edge technology and innovation. 500+ attendees from tech companies and startups participated in this transformative event.</p>
+        <div class="mt-3 flex gap-2">
+          <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Technology</span>
+          <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded">5000+ Attendees</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Item 2 -->
+    <div class="card-ghost overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1540575467063-178f50902556?w=500&h=350&fit=crop" alt="Music Festival" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="font-semibold text-lg mb-2">Live Music Festival</h3>
+        <p class="muted text-sm">Three days of non-stop entertainment with performances from local and international artists. Premium sound system, VIP zones, and incredible food trucks.</p>
+        <div class="mt-3 flex gap-2">
+          <span class="bg-pink-100 text-pink-700 text-xs px-2 py-1 rounded">Music</span>
+          <span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded">2000+ Attendees</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Item 3 -->
+    <div class="card-ghost overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=500&h=350&fit=crop" alt="Art Workshop" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="font-semibold text-lg mb-2">Creative Art Workshop</h3>
+        <p class="muted text-sm">Learn painting and drawing techniques from professional artists. Small batch classes with personalized attention. All materials provided. Perfect for beginners!</p>
+        <div class="mt-3 flex gap-2">
+          <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded">Art & Creativity</span>
+          <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">50 Attendees</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Item 4 -->
+    <div class="card-ghost overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=350&fit=crop" alt="Networking Event" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="font-semibold text-lg mb-2">Startup Networking Meetup</h3>
+        <p class="muted text-sm">Connect with founders, investors, and tech enthusiasts. Monthly gathering featuring pitch sessions, investor panel discussions, and networking cocktails.</p>
+        <div class="mt-3 flex gap-2">
+          <span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded">Networking</span>
+          <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded">100 Attendees</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Item 5 -->
+    <div class="card-ghost overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&h=350&fit=crop" alt="Wellness Retreat" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="font-semibold text-lg mb-2">Yoga & Wellness Retreat</h3>
+        <p class="muted text-sm">Weekend wellness getaway with yoga, meditation, spa treatments, and organic meals. Escape the city stress in a peaceful resort setting with nature.</p>
+        <div class="mt-3 flex gap-2">
+          <span class="bg-teal-100 text-teal-700 text-xs px-2 py-1 rounded">Wellness</span>
+          <span class="bg-cyan-100 text-cyan-700 text-xs px-2 py-1 rounded">50 Attendees</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Item 6 -->
+    <div class="card-ghost overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1555939594-58d7cb561501?w=500&h=350&fit=crop" alt="Food Festival" class="w-full h-64 object-cover">
+      <div class="p-4">
+        <h3 class="font-semibold text-lg mb-2">Street Food Festival</h3>
+        <p class="muted text-sm">Taste authentic cuisines from 50+ food stalls. Live cooking demonstrations, music performances, kids zone, and family activities. A culinary celebration!</p>
+        <div class="mt-3 flex gap-2">
+          <span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded">Food & Dining</span>
+          <span class="bg-lime-100 text-lime-700 text-xs px-2 py-1 rounded">3000+ Attendees</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Credit Section -->
+  <div class="mt-12 mb-8 bg-gradient-to-r from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-xl p-8 text-center shadow-md">
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Crafted with Passion</h2>
+    <p class="text-gray-700 leading-relaxed max-w-2xl mx-auto text-base">
+      This platform has been designed and developed entirely by <span class="font-semibold text-indigo-600">Nirjala</span>. 
+      From concept to coding, every part of this website has been built 
+      with passion, dedication, and a vision to simplify event organising.
+    </p>
+    <div class="mt-4 flex justify-center gap-2">
+      <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold">💻 Developer</span>
+      <span class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold">🎨 Designer</span>
+      <span class="bg-pink-100 text-pink-700 px-4 py-2 rounded-full text-sm font-semibold">🚀 Creator</span>
+    </div>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="mt-12 grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div class="card-ghost p-6 text-center">
+      <div class="text-3xl font-bold text-indigo-600">10K+</div>
+      <p class="muted mt-2">Total Events Hosted</p>
+    </div>
+    <div class="card-ghost p-6 text-center">
+      <div class="text-3xl font-bold text-purple-600">50K+</div>
+      <p class="muted mt-2">Happy Attendees</p>
+    </div>
+    <div class="card-ghost p-6 text-center">
+      <div class="text-3xl font-bold text-pink-600">100+</div>
+      <p class="muted mt-2">Verified Organisers</p>
+    </div>
+    <div class="card-ghost p-6 text-center">
+      <div class="text-3xl font-bold text-teal-600">4.9★</div>
+      <p class="muted mt-2">Average Rating</p>
+    </div>
+  </div>
+{% endblock %}

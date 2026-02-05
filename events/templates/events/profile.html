@@ -1,0 +1,31 @@
+{% extends 'events/base.html' %}
+{% block content %}
+  <h1 class="text-2xl font-bold">My Profile</h1>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-4">
+    <div class="card-ghost p-4">
+      <h3 class="font-semibold">Account</h3>
+      <div class="muted mt-2">Username: {{ user.username }}</div>
+      <div class="muted">Email: {{ user.email }}</div>
+    </div>
+    <div class="lg:col-span-2 card-ghost p-4">
+      <h3 class="font-semibold">Bookings</h3>
+      {% for r in regs %}
+        <div class="p-2 border-b flex justify-between items-center">
+          <div>
+            <div class="font-medium">{{ r.event.title }}</div>
+            <div class="muted text-sm">{{ r.created_at }}</div>
+          </div>
+          <div>
+            {% if not r.cancelled %}
+              <a href="#" class="text-red-600">Cancel</a>
+            {% else %}
+              <span class="muted">Cancelled</span>
+            {% endif %}
+          </div>
+        </div>
+      {% empty %}
+        <p class="muted">No bookings yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

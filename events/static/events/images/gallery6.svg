@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect width="100%" height="100%" fill="#fff7ed"/>
+  <circle cx="200" cy="120" r="80" fill="#fef3c7"/>
+  <text x="20" y="280" fill="#92400e" font-family="Inter">Gallery photo 6</text>
+</svg>

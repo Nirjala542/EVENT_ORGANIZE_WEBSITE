@@ -1,0 +1,165 @@
+{% extends 'events/base.html' %}
+{% block content %}
+  <!-- Discover Unforgettable Events Section -->
+  <div class="mb-8 bg-gradient-to-r from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-xl p-8 text-center shadow-md">
+    <h2 class="text-3xl font-bold text-gray-900 mb-3">Discover Unforgettable Events</h2>
+    <p class="text-gray-700 leading-relaxed max-w-2xl mx-auto text-base mb-6">Concerts, conferences, workshops, and exclusive experiences — all at your fingertips</p>
+    <div>
+      <a href="/events/" class="btn-accent mr-2 inline-block">Browse Now</a>
+      <a href="/gallery/" class="btn-outline inline-block">Gallery</a>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-semibold mb-4">Featured Events</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    {% for event in events|slice:":4" %}
+      <div class="event-card card-ghost p-4">
+        {% if event.image_url %}
+          <img src="{{ event.image_url }}" alt="{{ event.title }}" class="w-full h-40 object-cover rounded">
+        {% else %}
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=300&fit=crop" alt="event" class="w-full h-40 object-cover rounded">
+        {% endif %}
+        <h3 class="font-semibold mt-3">{{ event.title }}</h3>
+        <p class="muted text-sm">{{ event.short_description|truncatechars:120 }}</p>
+        <div class="mt-3 flex items-center justify-between">
+          <a href="/events/{{ event.slug }}/" class="text-indigo-600">Details</a>
+          <a href="/events/{{ event.slug }}/" class="text-green-600">Register</a>
+        </div>
+      </div>
+    {% empty %}
+      <p>No events found.</p>
+    {% endfor %}
+  </div>
+  <h2 class="text-2xl font-semibold mt-10">What people say</h2>
+  <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
+    {% for t in testimonials %}
+      <div class="p-4 card-ghost">
+        <div class="text-sm">⭐⭐⭐⭐⭐ "{{ t.text|truncatechars:160 }}"</div>
+        <div class="mt-3 muted text-xs">— {% if t.user %}{{ t.user.username }}{% else %}Happy Attendee{% endif %}</div>
+      </div>
+    {% empty %}
+      <div class="p-4 card-ghost">
+        <div class="text-sm">⭐⭐⭐⭐⭐ "Amazing events, easy to book, great community!"</div>
+        <div class="mt-3 muted text-xs">— Priya Sharma</div>
+      </div>
+      <div class="p-4 card-ghost">
+        <div class="text-sm">⭐⭐⭐⭐⭐ "Best platform for finding local events near me."</div>
+        <div class="mt-3 muted text-xs">— Rajesh Kumar</div>
+      </div>
+      <div class="p-4 card-ghost">
+        <div class="text-sm">⭐⭐⭐⭐⭐ "Organised organisers, smooth experience!"</div>
+        <div class="mt-3 muted text-xs">— Sarah Thompson</div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <section class="mt-12">
+    <h2 class="text-2xl font-semibold">Why Book-My-Event</h2>
+    <div class="features">
+      <div class="feature-card">
+        <div style="display:flex;align-items:center">
+          <div class="feature-icon" style="background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;font-size:32px">🎟️</div>
+          <div>
+            <div class="font-semibold">Simple Booking</div>
+            <div class="muted">Quick checkout and instant confirmation.</div>
+          </div>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div style="display:flex;align-items:center">
+          <div class="feature-icon" style="background:#fde68a;color:#92400e;font-size:32px">📍</div>
+          <div>
+            <div class="font-semibold">Local Events</div>
+            <div class="muted">Discover events happening near you.</div>
+          </div>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div style="display:flex;align-items:center">
+          <div class="feature-icon" style="background:#bfdbfe;color:#1e40af;font-size:32px">🤝</div>
+          <div>
+            <div class="font-semibold">Trusted Organisers</div>
+            <div class="muted">Organisers verified and rated by attendees.</div>
+          </div>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div style="display:flex;align-items:center">
+          <div class="feature-icon" style="background:#bbf7d0;color:#166534;font-size:32px">🔔</div>
+          <div>
+            <div class="font-semibold">Notifications</div>
+            <div class="muted">Reminders and updates before the event.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-2xl font-semibold">Featured Organisers</h2>
+    <div class="organisers mt-4">
+      <div class="organiser-card">
+        <div class="organiser-icon">🎤</div>
+        <div>
+          <div class="font-semibold">City Events Co.</div>
+          <div class="muted text-sm">Concerts & festivals</div>
+        </div>
+      </div>
+      <div class="organiser-card">
+        <div class="organiser-icon">🎨</div>
+        <div>
+          <div class="font-semibold">Creative Workshops</div>
+          <div class="muted text-sm">Workshops & learning</div>
+        </div>
+      </div>
+      <div class="organiser-card">
+        <div class="organiser-icon">🚀</div>
+        <div>
+          <div class="font-semibold">Startup Meetups</div>
+          <div class="muted text-sm">Networking</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credit Section -->
+  <section class="mt-12 bg-gradient-to-r from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-xl p-8 text-center shadow-md">
+    <h2 class="text-2xl font-bold text-gray-900 mb-3">Crafted with Passion</h2>
+    <p class="text-gray-700 leading-relaxed max-w-2xl mx-auto text-base">
+      This platform has been designed and developed entirely by <span class="font-semibold text-indigo-600">Nirjala</span>. 
+      From concept to coding, every part of this website has been built 
+      with passion, dedication, and a vision to simplify event organising.
+    </p>
+    <div class="mt-4 flex justify-center gap-2 flex-wrap">
+      <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold">💻 Developer</span>
+      <span class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold">🎨 Designer</span>
+      <span class="bg-pink-100 text-pink-700 px-4 py-2 rounded-full text-sm font-semibold">🚀 Creator</span>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+      {% for e in latest %}
+        <div class="card-ghost p-4">
+          {% if e.image_url %}
+            <img src="{{ e.image_url }}" class="w-full h-40 object-cover rounded">
+          {% else %}
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" class="w-full h-40 object-cover rounded">
+          {% endif %}
+          <div class="mt-3">
+            <div class="font-semibold">{{ e.title }}</div>
+            <div class="muted text-sm">{{ e.short_description|truncatechars:110 }}</div>
+          </div>
+          <div class="mt-3 flex justify-between items-center">
+            <a href="/events/{{ e.slug }}/" class="text-indigo-600">Details</a>
+            <a href="/events/{{ e.slug }}/" class="btn-accent">Register</a>
+          </div>
+        </div>
+      {% empty %}
+        <p class="muted">No recent events.</p>
+      {% endfor %}
+    </div>
+  </section>
+
+
+{% endblock %}

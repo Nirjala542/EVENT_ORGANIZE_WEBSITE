@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
+  <rect width="100%" height="100%" fill="#eef2ff"/>
+  <g fill="#c7d2fe" transform="translate(40,20)">
+    <rect x="0" y="0" width="560" height="220" rx="12" />
+    <circle cx="100" cy="140" r="50" fill="#e0e7ff" />
+  </g>
+  <text x="40" y="310" fill="#6b7280" font-family="Inter, sans-serif">Event image placeholder</text>
+</svg>

@@ -1,0 +1,73 @@
+{% extends 'events/base.html' %}
+{% block content %}
+  <h1 class="text-2xl font-bold mb-6">Organiser Dashboard</h1>
+  {% if not allowed %}
+    <div class="card-ghost p-4 mt-4">You must be an organiser to view this page.</div>
+  {% else %}
+    {% for e in events %}
+      <div class="card-ghost p-6 mb-6">
+        <div class="flex justify-between items-start mb-4">
+          <div>
+            <h2 class="text-xl font-semibold">{{ e.title }}</h2>
+            <p class="muted text-sm">📍 {{ e.location }} | 📅 {{ e.date }} at {{ e.time }}</p>
+          </div>
+          <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded text-sm font-semibold">{{ e.registration_set.filter|length }} Registrations</span>
+        </div>
+
+        <!-- Registrations Table -->
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead class="bg-gray-100 border-b">
+              <tr>
+                <th class="px-4 py-2 text-left">Full Name</th>
+                <th class="px-4 py-2 text-left">Age</th>
+                <th class="px-4 py-2 text-left">Phone</th>
+                <th class="px-4 py-2 text-left">Email</th>
+                <th class="px-4 py-2 text-left">Category</th>
+                <th class="px-4 py-2 text-left">College/Company</th>
+                <th class="px-4 py-2 text-left">Grad Year</th>
+                <th class="px-4 py-2 text-left">Registered</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for reg in e.registration_set.all %}
+                <tr class="border-b hover:bg-gray-50">
+                  <td class="px-4 py-3 font-semibold">{{ reg.full_name }}</td>
+                  <td class="px-4 py-3">{{ reg.age }}</td>
+                  <td class="px-4 py-3">{{ reg.phone_number }}</td>
+                  <td class="px-4 py-3"><a href="mailto:{{ reg.email }}" class="text-indigo-600 hover:underline">{{ reg.email }}</a></td>
+                  <td class="px-4 py-3">
+                    <span class="{% if reg.category == 'student' %}bg-blue-100 text-blue-800{% else %}bg-green-100 text-green-800{% endif %} px-2 py-1 rounded text-xs">
+                      {{ reg.get_category_display }}
+                    </span>
+                  </td>
+                  <td class="px-4 py-3 text-sm">
+                    {% if reg.category == 'student' %}
+                      {{ reg.college_name|default:"-" }}
+                    {% else %}
+                      -
+                    {% endif %}
+                  </td>
+                  <td class="px-4 py-3 text-sm">
+                    {% if reg.category == 'student' %}
+                      {{ reg.graduation_year|default:"-" }}
+                    {% else %}
+                      -
+                    {% endif %}
+                  </td>
+                  <td class="px-4 py-3 text-xs text-gray-600">{{ reg.created_at|date:"M d, Y" }}</td>
+                </tr>
+              {% empty %}
+                <tr>
+                  <td colspan="8" class="px-4 py-6 text-center muted">No registrations yet</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    {% empty %}
+      <p class="muted text-lg">You haven't created any events yet. <a href="/create-event/" class="text-indigo-600 hover:underline">Create Event</a></p>
+    {% endfor %}
+  {% endif %}
+{% endblock %}

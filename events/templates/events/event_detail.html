@@ -1,0 +1,57 @@
+{% extends 'events/base.html' %}
+{% block content %}
+  <div class="bg-white p-6 rounded shadow lg:flex gap-6">
+    <div class="lg:w-2/3">
+      {% if event.image_url %}
+        <img src="{{ event.image_url }}" class="w-full h-72 object-cover rounded">
+      {% else %}
+        <img src="/static/events/images/event-placeholder.svg" class="w-full h-72 object-cover rounded">
+      {% endif %}
+      <h1 class="text-2xl font-bold mt-4">{{ event.title }}</h1>
+      <p class="muted mt-2">{{ event.highlights }}</p>
+      <hr class="my-4" />
+      <div class="prose">{{ event.description|linebreaks }}</div>
+    </div>
+    <aside class="lg:w-1/3">
+      <div class="card-ghost p-4">
+        <div class="mb-3">
+          <strong>When</strong>
+          <div class="muted">{{ event.date }} {{ event.time }}</div>
+        </div>
+        <div class="mb-3">
+          <strong>Where</strong>
+          <div class="muted">{{ event.location }}</div>
+        </div>
+        <div class="mb-3">
+          <strong>Seats</strong>
+          <div class="muted">{{ event.capacity }}</div>
+        </div>
+        <div class="mt-4">
+          {% if user.is_authenticated %}
+            <a href="/events/{{ event.slug }}/register/" class="btn-accent w-full inline-block text-center">Register</a>
+          {% else %}
+            <a href="/login/" class="btn-accent w-full inline-block text-center">Login to Register</a>
+          {% endif %}
+        </div>
+        <hr class="my-3" />
+        <div>
+          <strong>Organiser</strong>
+          <div class="muted">{% if event.organiser %}{{ event.organiser.username }}{% else %}Unknown organiser{% endif %}</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="mt-6">
+    <h3 class="text-lg font-semibold">Contact Organiser</h3>
+    <p class="muted text-sm">Fill this form to send a message to the organiser.</p>
+    <form method="post" class="mt-3">
+      {% csrf_token %}
+      <input name="name" placeholder="Your name" class="border p-2 w-full rounded" required />
+      <input name="email" placeholder="Your email" class="border p-2 w-full rounded mt-2" required />
+      <textarea name="message" placeholder="Message" class="border p-2 w-full rounded mt-2" rows="4" required></textarea>
+      <input type="hidden" name="contact_submit" value="1" />
+      <div class="mt-3"><button class="btn-accent">Send message</button></div>
+    </form>
+  </div>
+{% endblock %}
